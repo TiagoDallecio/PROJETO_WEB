@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Xcontroller;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/',[Xcontroller::class,'index']);
+
+/*Alunos*/
+Route::get('/alunos/matricula',[Xcontroller::class,'matriculaA']);
+Route::post('/alunos/matricula',[Xcontroller::class,'astore']);

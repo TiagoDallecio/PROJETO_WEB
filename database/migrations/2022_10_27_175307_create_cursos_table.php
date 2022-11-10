@@ -20,9 +20,9 @@ return new class extends Migration
             $table->tinyText('Descrição_simplificada_do_curso');
             $table->string('Professor');
             $table->integer('Número mínimo_de_alunos');
-            $table->integer('Número_de_alunos_inscritos');
+            $table->integer('Número_de_alunos_inscritos')->default('0');
             $table->integer('Número_máximo_de_alunos');
-            $table->integer('Status');
+            $table->tinyInteger('Status')->default('0');
             $table->string('Imagem_do_curso');
             $table->timestamps();
         });

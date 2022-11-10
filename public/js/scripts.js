@@ -65,3 +65,78 @@ else {
     limpa_formulário_cep();
 }
 };
+
+
+ $(function(){
+    //função para adicionar um formulário de escolha de imagens
+    //link: https://pt.stackoverflow.com/questions/13188/como-criar-um-select-com-imagens-nas-op%C3%A7%C3%B5es
+    var sels = $(".fake-sel");
+    
+    var imgs_ = [
+       [
+          'https://www.cleverfiles.com/howto/wp-content/uploads/2016/08/mini.jpg',
+          'https://oc2.ocstatic.com/images/logo_small.png',
+          'https://upload.wikimedia.org/wikipedia/commons/3/3a/Cat03.jpg'
+       ]
+    ];
+ 
+    sels.each(function(x){
+       
+       var $t = $(this);
+       
+       var opts_ = '', first;
+       
+       $t.find("option").each(function(i){
+          
+          if(i == 0){
+             first = "<li><img src='"+ imgs_[x][i] +"'>"+ $(this).text() +"</li>";
+          }
+          opts_ += "<li"+ (i == 0 ? " class='ativo'" : '') +"><img src='"+ imgs_[x][i] +"'>"+ $(this).text() +"</li>";
+       });
+ 
+       $t
+       .wrap("<div class='fake-sel-wrap'></div>")
+       .parent()
+       .css("width", $t.outerWidth()+60)
+       .append("<ul>"+ first+opts_ +"</ul>")
+       .find("ul")
+       .on("click", function(e){
+          e.stopPropagation();
+          $(".fake-sel-wrap ul")
+          .not(this)
+          .removeClass("ativo");
+          $(this).toggleClass("ativo");
+       })
+       .find("li:not(:first)")
+       .on("click", function(){
+          $(this)
+          .addClass("ativo")
+          .siblings()
+          .removeClass("ativo")
+          .parent()
+          .find("li:first")
+          .html($(this).html());
+          
+          $t.val($(this).text());
+          
+       });
+    });
+    
+    $(document).on("click", function(){
+       $(".fake-sel-wrap ul").removeClass("ativo");
+    });
+    
+ });
+
+ //função que habilita ou desabilita um determinado input
+ function verifica(){
+         var optionSelect = document.getElementById("tipo").value;
+
+      if(optionSelect == "Professor"){
+         document.getElementById("avatar").disabled = false;
+         document.getElementById("Movie").disabled = true;
+      }else if(optionSelect == "Aluno"){
+         document.getElementById("avatar").disabled = true;
+         document.getElementById("Movie").disabled = false;
+      }
+ };

@@ -17,7 +17,10 @@ return new class extends Migration
             $table->id();
             $table->string('Nome_Completo');
             $table->string('CPF',14);
-            $table->string('Endereço_de_moradia');
+            $table->string('Rua_de_moradia');
+            $table->string('Bairro');
+            $table->string('Cidade');
+            $table->string('Estado');
             $table->string('Usuário');
             $table->string('Senha');
             $table->datetime('Ultimo_acesso');

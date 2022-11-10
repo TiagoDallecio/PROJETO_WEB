@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('alunos', function (Blueprint $table) {
-            $table->id('user_id_a');
+            $table->id('user_id');
             $table->timestamps();
             $table->string('Nome_Completo');
             $table->string('CPF',14);

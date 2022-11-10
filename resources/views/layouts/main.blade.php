@@ -5,6 +5,8 @@
         <meta name="viewport"  content="width=device-width, initial scale-scale=1">
 
         <title>@yield('title')</title>
+        <!--Ícone do site-->
+        <link rel="website icon" type="png" href="/img/AXIONmini.png">
 
         <!-- Fonte -->
         <link href="https://fonts.googleapis.com/css2?family=Poppins" rel="stylesheet">
@@ -20,11 +22,13 @@
         <!-- CSS -->
         <link rel="stylesheet" type="text/css" href="/css/style.css">
         <!--Javascript-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="/js/scripts.js"></script>
 
     </head>
     <body>
         <header>
+            <!--Barra de navegação do site-->
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <div class="container-fluid">
                     <a href="/" class="navbar-brand">
@@ -38,29 +42,20 @@
                         <ul class="navbar-nav">
                          <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Alunos
+                                Alunos/Professores
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="/alunos/matricula">Matricular aluno</a></li>
-                                <li><a class="dropdown-item" href="/alunos/consulta">Consultar alunos</a></li>
+                                <li><a class="dropdown-item" href="/usuario/cadastro">Cadastrar</a></li>
+                                <li><a class="dropdown-item" href="/usuario/consulta">Consultar</a></li>
                             </ul>
                          </li>
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="/professores" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Professores
+                                <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Cursos
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                    <li><a class="dropdown-item" href="/professores/inserir">Inserir</a></li>
-                                    <li><a class="dropdown-item" href="/professores/consultar">Consultar</a></li>
-                                </ul>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="/materia" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Matérias
-                                </a>
-                                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                    <li><a class="dropdown-item" href="/materia/inserir">Inserir</a></li>
-                                    <li><a class="dropdown-item" href="/materia/consultar">Consultar</a></li>
+                                    <li><a class="dropdown-item" href="/curso/cadastro">Cadastrar</a></li>
+                                    <li><a class="dropdown-item" href="/curso/consulta">Consultar</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -68,13 +63,23 @@
                 </div>
             </nav>
         </header>
-        
-        <img id="axionimg" src="/img/AXION.png" alt="">
-
-        @yield('content')
+        <!--Logo do site, declaração de flash message e footer-->
+        <img id="axionimg" src="/img/AXION.png">
+        <main>
+            <div class="container-fluid">
+                <div class="row">
+                @if(session('msg'))
+                    <p class="msg">{{ session('msg') }}</p>
+                @endif
+                @yield('content')
+                </div>
+            </div>
+        </main>
+       
         <footer>
             <p>Axion Technology&copy;</p>
         </footer>
+        <!--Scripts do ionicons:https://ionic.io/ionicons-->
         <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
         <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     </body>

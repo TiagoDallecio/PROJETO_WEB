@@ -16,6 +16,14 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/',[Xcontroller::class,'index']);
 
-/*Alunos*/
-Route::get('/alunos/matricula',[Xcontroller::class,'matriculaA']);
-Route::post('/alunos/matricula',[Xcontroller::class,'astore']);
+/*CRUD USER*/
+Route::get('usuario/cadastro',[Xcontroller::class,'matricula']);
+Route::post('usuario/cadastro',[Xcontroller::class,'store']);
+Route::get('usuario/consulta',[Xcontroller::class,'db']); 
+Route::get('usuario/atualizar/{user_id}',[Xcontroller::class,'update']);
+Route::patch('usuario/atualizar/{user_id}',[Xcontroller::class,'store']);
+
+/*CRUD CURSO*/
+Route::get('curso/cadastro',[Xcontroller::class,'cadcurso']);
+Route::post('curso/cadastro',[Xcontroller::class,'cstore']);
+Route::get('curso/consulta',[Xcontroller::class,'cdb']);

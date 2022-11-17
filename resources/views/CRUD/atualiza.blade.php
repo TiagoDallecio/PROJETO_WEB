@@ -10,7 +10,7 @@
     <h1>Atualizar informações de {{ $user->Nome_Completo}}</h1>
     <form action="/usuario/atualizar/{{$user->id}}" method="POST">
         @csrf
-        @method("PATCH")
+        @method('PUT')
         <div class="form-group">
             <br>
 
@@ -25,7 +25,7 @@
         </div>
 
             <label>Nome de usuário:</label>
-            <input type="text" class="form-control" name="Username" id="Username" size="30" value="{{$user->Nome_de_usuário}}">
+            <input type="email" class="form-control" name="email" id="email" size="30" value="{{$user->Nome_de_usuário}}">
 
             <input type="hidden" name="Senha" id="Senha" value="{{$user->Senha_de_acesso}}">
 
@@ -52,6 +52,17 @@
         <label>IBGE:
             <input name="ibge" type="text" id="ibge" class="form-control" size="8" /></label><br />
         <br>
+
+        @if ($user->Tipo_de_conta == 'Professor')
+
+        <br>
+        <h3>Avatar:</h3>
+        <select name="avatar" id="avatar" class="fake-sel">
+            <option value="/img/avatar/the_png">Chef</option>
+            <option value="/img/avatar/">teste</option>
+            <option value="/img/avatar/">teste2</option>
+        </select>
+        @endif
 
         <input type="hidden" name="tipo" id="tipo" value="{{$user->Tipo_de_conta}}">
 

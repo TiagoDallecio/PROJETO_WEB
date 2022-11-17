@@ -129,14 +129,15 @@ else {
  });
 
  //função que habilita ou desabilita um determinado input
- function verifica(){
-         var optionSelect = document.getElementById("tipo").value;
+ function verifica(value){
+         var input = document.getElementById("tipo");
+         var input2 = document.getElementById("Movie");
 
-      if(optionSelect == "Professor"){
-         document.getElementById("avatar").disabled = false;
-         document.getElementById("Movie").disabled = true;
-      }else if(optionSelect == "Aluno"){
-         document.getElementById("avatar").disabled = true;
-         document.getElementById("Movie").disabled = false;
-      }
+         if(value == "Professor"){
+            input.disabled = false;
+            input2.disabled = true;
+         }else if (value == "Aluno"){
+            input.disabled = true;
+            input2.disabled = false;
+         }
  };

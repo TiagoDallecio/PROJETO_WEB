@@ -10,7 +10,15 @@
     <form action="/usuario/cadastro" method="POST">
         @csrf
         <div class="form-group">
-            <br>
+        <br>
+            
+        <h3>Tipo de conta:</h3>
+        <select name="tipo" id="tipo" class="form-control" required>
+            <option value="Aluno">Aluno</option>
+            <option value="Professor">Professor</option>
+        </select>
+
+        <br>
             <h3>Informações de usuário:</h3>
 
             </label>
@@ -23,8 +31,8 @@
             <input type="text" class="form-control" id="CPF" name="CPF" placeholder="CPF (sem pontos nem traço)" required>
         </div>
 
-            <label>Nome de usuário:</label>
-            <input type="text" class="form-control" name="Username" id="Username" size="30" placeholder="Digite seu nome de usuário:" required>
+            <label>Email:</label>
+            <input type="email" class="form-control" name="email" id="email" size="30" required>
             <div>
                 <label>Senha:</label>
                 <input type="password" class="form-control" name="Senha" id="Senha" size="20" placeholder="Digite sua senha:" required>
@@ -52,13 +60,6 @@
 
         <label>IBGE:
             <input name="ibge" type="text" id="ibge" class="form-control" size="8" /></label><br />
-       
-         <br>
-        <h3>Tipo de conta:</h3>
-        <select name="tipo" id="tipo" class="form-control" required>
-            <option value="Aluno">Aluno</option>
-            <option value="Professor">Professor</option>
-        </select>
 
         <br>
         <h3>Avatar:</h3>
@@ -67,7 +68,7 @@
             <option value="/img/avatar/">teste</option>
             <option value="/img/avatar/">teste2</option>
         </select>
-
+        
         <br>
        <input type="submit" class="btn btn-primary" value="Cadastrar aluno">
 

@@ -20,10 +20,13 @@ Route::get('/',[Xcontroller::class,'index']);
 Route::get('usuario/cadastro',[Xcontroller::class,'matricula']);
 Route::post('usuario/cadastro',[Xcontroller::class,'store']);
 Route::get('usuario/consulta',[Xcontroller::class,'db']); 
-Route::get('usuario/atualizar/{user_id}',[Xcontroller::class,'update']);
-Route::patch('usuario/atualizar/{user_id}',[Xcontroller::class,'store']);
+Route::get('usuario/atualizar/{user_id}',[Xcontroller::class,'edit']);
+Route::put('usuario/atualizar/{user_id}',[Xcontroller::class,'update']);
 
 /*CRUD CURSO*/
 Route::get('curso/cadastro',[Xcontroller::class,'cadcurso']);
 Route::post('curso/cadastro',[Xcontroller::class,'cstore']);
 Route::get('curso/consulta',[Xcontroller::class,'cdb']);
+
+//Auth::routes();
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

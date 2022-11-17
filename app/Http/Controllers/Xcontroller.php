@@ -26,7 +26,7 @@ class Xcontroller extends Controller
 
         $user->Nome_Completo = $request->title;
         $user->CPF = $request->CPF;
-        $user->Nome_de_usuário = $request->Username;
+        $user->Email = $request->email;
         $user->Senha_de_acesso = $request->Senha;
         $user->Filme_preferido = $request->Movie;
         $user->CEP = $request->cep;
@@ -50,11 +50,18 @@ class Xcontroller extends Controller
         return view('CRUD.consulta',['user' => $user]);
     }
 
-    public function update($user_id){
+    public function edit($user_id){
 
         $user = User::findOrFail($user_id);
 
         return view('CRUD.atualiza',['user' => $user]);
+    }
+
+    public function update(Request $request,$user_id) {
+
+       User::findOrFail($user_id)->update($request->all());
+
+       return redirect('/usuario/consulta')->with('msg', 'Usuário atualizado com sucesso!');
     }
 
 

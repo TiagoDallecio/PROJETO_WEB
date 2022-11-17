@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('Cidade');
             $table->string('Estado');
             $table->string('Filme_preferido')->nullable();
-            $table->string('Nome_de_usuário');
+            $table->string('Email');
             $table->string('Senha_de_acesso');
             $table->string('Tipo_de_conta');
             $table->string('Avatar')->nullable();

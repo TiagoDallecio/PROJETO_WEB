@@ -25,7 +25,7 @@ return new class extends Migration
             $table->string('Filme_preferido')->nullable();
             $table->string('Email');
             $table->string('Senha_de_acesso');
-            $table->string('Tipo_de_conta');
+            $table->string('Tipo_de_conta')->default('Aluno');
             $table->string('Avatar')->nullable();
             $table->datetime('Ultimo_acesso')->useCurrent();
             $table->rememberToken();

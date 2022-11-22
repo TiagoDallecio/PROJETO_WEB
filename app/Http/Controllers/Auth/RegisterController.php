@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
@@ -50,17 +51,9 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'Nome_Completo' => ['required', 'string', 'max:255'],
-            'CPF' => ['required', 'string', 'max:15'],
-            'Email' => ['required', 'string'],
-            'Filme_preferido' => ['required', 'string'],
-            'CEP' => ['required', 'string'],
-            'Rua_de_moradia' => ['required', 'string'],
-            'Bairro' => ['required', 'string'],
-            'Cidade' => ['required', 'string'],
-            'Estado' => ['required', 'string'],
-            'Senha_de_acesso' => Hash::make($data['password']),
-
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
 
@@ -73,17 +66,29 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         return User::create([
-            'Nome_Completo' => $data['Nome_Completo'],
-            'CPF' => $data['CPF'],
+            'Nome_Completo' => $data['name'],
             'Email' => $data['email'],
-            'Filme_preferido' => $data['Movie'],
-            'CEP' => $data['cep'],
-            'Rua_de_moradia' => $data['rua'],
-            'Bairro' => $data['bairro'],
-            'Cidade' => $data['cidade'],
-            'Estado' => $data['uf'],
             'Senha_de_acesso' => Hash::make($data['password']),
-
         ]);
+    }
+
+    public function store(Request $request) {
+
+        $user = new User;
+
+        $user->CPF = $request->CPF;
+        $user->Filme_preferido = $request->Movie;
+        $user->CEP = $request->cep;
+        $user->Rua_de_moradia = $request->rua;
+        $user->Bairro = $request->bairro;
+        $user->Cidade = $request->cidade;
+        $user->Estado = $request->uf;
+        $user->Tipo_de_Conta = $request->tipo;
+        $user->Avatar = $request->avatar;
+
+        $user->save();
+
+        return redirect('/usuario/consulta')->with('msg', 'Usuário cadastrado com sucesso!');
+
     }
 }

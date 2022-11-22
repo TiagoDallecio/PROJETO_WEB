@@ -28,5 +28,9 @@ Route::get('curso/cadastro',[Xcontroller::class,'cadcurso']);
 Route::post('curso/cadastro',[Xcontroller::class,'cstore']);
 Route::get('curso/consulta',[Xcontroller::class,'cdb']);
 
-//Auth::routes();
+
+
+Auth::routes();
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::post('/register',[App\Http\Controllers\Auth\RegisterController::class,'store']);

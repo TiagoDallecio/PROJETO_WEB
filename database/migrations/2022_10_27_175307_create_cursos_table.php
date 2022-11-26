@@ -18,11 +18,13 @@ return new class extends Migration
             $table->string('Nome_do_curso');
             $table->text('Descrição_completa_do_curso');
             $table->tinyText('Descrição_simplificada_do_curso');
-            $table->string('Professor');
-            $table->integer('Número mínimo_de_alunos');
+            $table->string('Professor')->nullable();
+            $table->integer('Número_mínimo_de_alunos');
             $table->integer('Número_de_alunos_inscritos')->default('0');
             $table->integer('Número_máximo_de_alunos');
-            $table->tinyInteger('Status')->default('0');
+            $table->json('Alunos')->nullable();
+            $table->float('media')->nullable();
+            $table->tinyInteger('Status')->default('0')->nullable();
             $table->string('Imagem_do_curso');
             $table->timestamps();
         });

@@ -5,17 +5,17 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
+                <div class="card-header">{{ __('Registre-se') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
 
                         <div class="row mb-3">
-                            <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Name') }}</label>
+                            <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Nome') }}</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" placeholder="Nome Completo" required autocomplete="name" autofocus>
 
                                 @error('name')
                                     <span class="invalid-feedback" role="alert">
@@ -26,7 +26,7 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
+                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email') }}</label>
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" size="30">
@@ -43,7 +43,7 @@
                             <label for="CPF" class="col-md-4 col-form-label text-md-end">{{ __('CPF') }}</label>
 
                             <div class="col-md-6">
-                                <input id="CPF" type="text" class="form-control @error('CPF') is-invalid @enderror" name="CPF" value="{{ old('CPF') }}" required autocomplete="CPF" autofocus>
+                                <input id="CPF" type="text" class="form-control @error('CPF') is-invalid @enderror" placeholder="___.___.___-__" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}"name="CPF" required autocomplete="CPF" autofocus>
 
                                 @error('CPF')
                                     <span class="invalid-feedback" role="alert">
@@ -57,7 +57,7 @@
                             <label for="cep" class="col-md-4 col-form-label text-md-end">{{ __('CEP') }}</label>
 
                             <div class="col-md-6">
-                                <input id="cep" type="text" class="form-control @error('cep') is-invalid @enderror" name="cep" value="{{ old('cep') }}" required autocomplete="cep" autofocus size="10">
+                                <input id="cep" type="text" class="form-control @error('cep') is-invalid @enderror" placeholder="_____-___" pattern="\d{5}-\d{3}" onblur="pesquisacep(this.value);" name="cep" value="{{ old('cep') }}" required autocomplete="cep" autofocus size="10">
 
                                 @error('cep')
                                     <span class="invalid-feedback" role="alert">
@@ -146,10 +146,10 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
+                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Senha') }}</label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                                <input id="password" placeholder="No mínimo 8 caracteres" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
 
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
@@ -160,7 +160,7 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('Confirm Password') }}</label>
+                            <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('Confirme sua senha') }}</label>
 
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
@@ -168,14 +168,14 @@
                         </div>
 
                             <div class="col-md-6">
-                                <input id="tipo" type="hidden" class="form-control" name="tipo" value="{{ old('tipo') }}" required autocomplete="tipo" value="Aluno" autofocus>
+                                <input id="tipo" type="hidden" class="form-control" name="tipo" required autocomplete="tipo" value="Aluno" autofocus>
                             </div>
                         </div>
 
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
+                                    {{ __('Registrar') }}
                                 </button>
                             </div>
                         </div>

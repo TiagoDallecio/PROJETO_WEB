@@ -30,7 +30,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -67,28 +67,20 @@ class RegisterController extends Controller
     {
         return User::create([
             'Nome_Completo' => $data['name'],
+            'CPF' => $data['CPF'],
             'Email' => $data['email'],
-            'Senha_de_acesso' => Hash::make($data['password']),
+            'CEP' =>$data['cep'],
+            'Filme_preferido' =>$data['Movie'],
+            'Rua_de_moradia' =>$data['rua'],
+            'Cidade' =>$data['cidade'],
+            'Bairro' =>$data['bairro'],
+            'Estado' =>$data['uf'],
+            'Tipo_de_conta' =>$data['tipo'],
+            'Avatar'=>NULL,
+            'Senha_de_acesso' => bcrypt($data['password']),
         ]);
-    }
 
-    public function store(Request $request) {
-
-        $user = new User;
-
-        $user->CPF = $request->CPF;
-        $user->Filme_preferido = $request->Movie;
-        $user->CEP = $request->cep;
-        $user->Rua_de_moradia = $request->rua;
-        $user->Bairro = $request->bairro;
-        $user->Cidade = $request->cidade;
-        $user->Estado = $request->uf;
-        $user->Tipo_de_Conta = $request->tipo;
-        $user->Avatar = $request->avatar;
-
-        $user->save();
-
-        return redirect('/usuario/consulta')->with('msg', 'Usuário cadastrado com sucesso!');
 
     }
+
 }

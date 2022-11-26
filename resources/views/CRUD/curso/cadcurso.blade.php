@@ -32,6 +32,7 @@
             <br>
             <label for="prof">Professor do curso:</label>
             <select name="prof" id="prof" required>
+                <option value="NULL">Nenhum</option>
                 @foreach($user as $prof)
                 <option value="{{$prof->Nome_Completo}}">{{$prof->Nome_Completo}}</option>
                 @endforeach
@@ -48,8 +49,16 @@
             
             <br><br>
             
-            <label for="image">Imagem do curso:</label>
-            <input type="file" name="image" id="image" class="form-control-file">
+            @foreach($img as $image)
+            <img src="{{ $image->img }}" width="210" height="140">
+            <input type="checkbox" value="{{ $image->img }}" name="imagem" id="imagem">
+            @endforeach
+
+            <br><br>
+            <label for="data">Data do curso</label>
+            <input type="date" name="data" id="data">
+
+            <input type="hidden" name="status" id="status" value="0">
 
         </div>
         <br>

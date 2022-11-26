@@ -28,7 +28,7 @@
 
         <div class="form-group">
             <label for="title">CPF:</label>
-            <input type="text" class="form-control" id="CPF" name="CPF" placeholder="CPF (sem pontos nem traço)" required>
+            <input type="text" class="form-control" id="CPF" name="CPF" placeholder="___.___.___-__" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" required>
         </div>
 
             <label>Email:</label>
@@ -44,7 +44,7 @@
         <br>
         <h3>Endereço:</h3>
         <label>CEP:
-            <input name="cep" type="text" class="form-control" id="cep" value="" size="10" maxlength="9" onblur="pesquisacep(this.value);" required /></label><br />
+            <input name="cep" type="text" class="form-control" id="cep" placeholder="_____-___" value="" size="10" maxlength="9" pattern="\d{5}-\d{3}" onblur="pesquisacep(this.value);" required /></label><br />
 
         <label>Rua:
             <input name="rua" type="text" id="rua" size="60" class="form-control" /></label><br />
@@ -61,16 +61,17 @@
         <label>IBGE:
             <input name="ibge" type="text" id="ibge" class="form-control" size="8" /></label><br />
 
-        <br>
-        <h3>Avatar:</h3>
-        <select name="avatar" id="avatar" class="fake-sel">
-            <option value="/img/avatar/the_png">Chef</option>
-            <option value="/img/avatar/">teste</option>
-            <option value="/img/avatar/">teste2</option>
-        </select>
         
         <br>
-       <input type="submit" class="btn btn-primary" value="Cadastrar aluno">
+        <h3>Avatar (Apenas professores podem ter um avatar):</h3>
+        
+        @for($i=0; $i<(count($avatares)); $i++)
+        <label for="$avatares[$i]"><img src="{{ $avatares[$i]->code }}" height="70" width="50"></label>
+        <input type="checkbox" name="$avatares[$i]" value="{{ $avatares[$i]->code }}" id="avatar">
+        @endfor
+
+        <br>
+       <input type="submit" class="btn btn-primary" value="Cadastrar usuario">
 
        
 

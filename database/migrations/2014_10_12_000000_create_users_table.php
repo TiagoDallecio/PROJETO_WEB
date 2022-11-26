@@ -15,18 +15,21 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('Nome_Completo');
-            $table->string('CPF',14);
-            $table->string('CEP');
-            $table->string('Rua_de_moradia');
-            $table->string('Bairro');
-            $table->string('Cidade');
-            $table->string('Estado');
+            $table->string('Nome_Completo')->nullable();
+            $table->string('CPF')->nullable();
+            $table->string('CEP')->nullable();
+            $table->string('Rua_de_moradia')->nullable();
+            $table->string('Bairro')->nullable();
+            $table->string('Cidade')->nullable();
+            $table->string('Estado')->nullable();
             $table->string('Filme_preferido')->nullable();
-            $table->string('Email');
-            $table->string('Senha_de_acesso');
-            $table->string('Tipo_de_conta')->default('Aluno');
+            $table->string('Email')->nullable();
+            $table->string('Senha_de_acesso')->nullable();
+            $table->string('Tipo_de_conta')->nullable();
             $table->string('Avatar')->nullable();
+            $table->json('Cursos')->nullable();
+            $table->float('Média')->nullable();
+            $table->json('Aula')->nullable();
             $table->datetime('Ultimo_acesso')->useCurrent();
             $table->rememberToken();
             $table->timestamps();

@@ -17,6 +17,8 @@ class Curso extends Model
         'Número_mínimo_de_alunos',
         'Número_máximo_de_alunos',
         'Número_de_alunos_inscritos',
+        'Alunos',
+        'media',
         'Status',
         'data',
         'Imagem_do_curso',

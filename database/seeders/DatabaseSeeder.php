@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             avatares::class,
             cursoimg::class,
+            users::class,
         ]);
 
 

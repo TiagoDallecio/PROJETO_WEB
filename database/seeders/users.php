@@ -17,7 +17,7 @@ class users extends Seeder
     public function run()
     {
         DB::table('users')->insert([
-            'Nome_Completo' => 'Admin',
+            'name' => 'Admin',
             'CPF'=> NULL,
             'CEP'=>NULL,
             'Rua_de_moradia'=>NULL,
@@ -25,8 +25,8 @@ class users extends Seeder
             'Cidade'=>NULL,
             'Estado'=>NULL,
             'Filme_preferido'=>NULL,
-            'Email'=>'admin@gmail.com',
-            'Senha_de_acesso'=>bcrypt('admin123'),
+            'email'=>'admin@gmail.com',
+            'password'=>bcrypt('admin123'),
             'Tipo_de_conta'=>'Administrador',
             'Avatar'=>NULL,
             'Cursos'=>NULL,
@@ -36,7 +36,7 @@ class users extends Seeder
         ]);
 
         DB::table('users')->insert([
-            'Nome_Completo' => 'Secretaria',
+            'name' => 'Secretaria',
             'CPF'=> NULL,
             'CEP'=>NULL,
             'Rua_de_moradia'=>NULL,
@@ -44,8 +44,8 @@ class users extends Seeder
             'Cidade'=>NULL,
             'Estado'=>NULL,
             'Filme_preferido'=>NULL,
-            'Email'=>'secretaria@gmail.com',
-            'Senha_de_acesso'=>bcrypt('secret123'),
+            'email'=>'secretaria@gmail.com',
+            'password'=>bcrypt('secret123'),
             'Tipo_de_conta'=>'Secretaria',
             'Avatar'=>NULL,
             'Cursos'=>NULL,

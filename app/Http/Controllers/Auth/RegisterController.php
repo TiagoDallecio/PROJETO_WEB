@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Auth;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
@@ -30,7 +29,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/';
+    protected $redirectTo = RouteServiceProvider::HOME;
 
     /**
      * Create a new controller instance.
@@ -66,9 +65,9 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         return User::create([
-            'Nome_Completo' => $data['name'],
+            'name' => $data['name'],
             'CPF' => $data['CPF'],
-            'Email' => $data['email'],
+            'email' => $data['email'],
             'CEP' =>$data['cep'],
             'Filme_preferido' =>$data['Movie'],
             'Rua_de_moradia' =>$data['rua'],
@@ -77,10 +76,8 @@ class RegisterController extends Controller
             'Estado' =>$data['uf'],
             'Tipo_de_conta' =>$data['tipo'],
             'Avatar'=>NULL,
-            'Senha_de_acesso' => bcrypt($data['password']),
+            'password' => Hash::make($data['password']),
         ]);
 
-
     }
-
 }

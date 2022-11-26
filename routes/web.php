@@ -44,5 +44,3 @@ Route::delete('/curso/consulta/{id}',[Xcontroller::class,'cdestroy']);
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-

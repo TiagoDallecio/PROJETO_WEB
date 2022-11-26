@@ -10,7 +10,7 @@
 @for($i=0; $i<(count($users)); $i++) <br>
     <div class="dropdown">
         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            {{$users[$i] -> Nome_Completo}}
+            {{$users[$i] -> name}}
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <li class="dropdown-item">
@@ -36,7 +36,7 @@
                 <ion-icon name="film-outline"></ion-icon>Filme: {{$users[$i] -> Filme_preferido}}
             </li>
             <li class="dropdown-item">
-                <ion-icon name="person-circle-outline"></ion-icon>Email: {{$users[$i] -> Email}}
+                <ion-icon name="person-circle-outline"></ion-icon>Email: {{$users[$i] -> email}}
             </li>
             <div class="dropdown-divider"></div>
             <a href="atualizar/{{$users[$i] -> id}}" class="dropdown-item">

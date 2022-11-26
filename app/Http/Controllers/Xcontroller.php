@@ -29,9 +29,9 @@ class Xcontroller extends Controller
         
         {
         User::create([
-        'Nome_Completo' => $data['title'],
+        'name' => $data['title'],
         'CPF' => $data['CPF'],
-        'Email' => $data['email'],
+        'email' => $data['email'],
         'CEP' =>$data['cep'],
         'Filme_preferido' =>$data['Movie'],
         'Rua_de_moradia' =>$data['rua'],
@@ -40,7 +40,7 @@ class Xcontroller extends Controller
         'Estado' =>$data['uf'],
         'Tipo_de_conta' =>$data['tipo'],
         'Avatar'=>NULL,
-        'Senha_de_acesso' => bcrypt($data['Senha']),
+        'password' => bcrypt($data['Senha']),
             ]);
         }
 
@@ -48,9 +48,9 @@ class Xcontroller extends Controller
         
         {
             User::create([
-                'Nome_Completo' => $data['title'],
+                'name' => $data['title'],
                 'CPF' => $data['CPF'],
-                'Email' => $data['email'],
+                'email' => $data['email'],
                 'CEP' =>$data['cep'],
                 'Filme_preferido' =>$data['Movie'],
                 'Rua_de_moradia' =>$data['rua'],
@@ -59,7 +59,7 @@ class Xcontroller extends Controller
                 'Estado' =>$data['uf'],
                 'Tipo_de_conta' =>$data['tipo'],
                 'Avatar'=>$data['avatar'],
-                'Senha_de_acesso' => bcrypt($data['Senha']),
+                'password' => bcrypt($data['Senha']),
                     ]);
         }
 

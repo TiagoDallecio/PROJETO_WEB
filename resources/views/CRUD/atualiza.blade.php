@@ -1,12 +1,12 @@
 @extends('layouts.main')
 
-@section('title', $user->Nome_Completo)
+@section('title', $user->name)
 
 @section('content')
 
 <div id="user-update-container" class="col-md-6 offset-md-3"> 
 <br>
-    <h1>Atualizar informações de {{ $user->Nome_Completo}}</h1>
+    <h1>Atualizar informações de {{ $user->name}}</h1>
     <form action="/usuario/atualizar/{{$user->id}}" method="POST">
         @csrf
         @method('PUT')
@@ -15,7 +15,7 @@
 
             </label>
             <label for="title">Nome:</label>
-            <input type="text" class="form-control" id="title" name="Nome_Completo" value="{{$user->Nome_Completo}}">
+            <input type="text" class="form-control" id="title" name="name" value="{{$user->name}}">
         </div>
 
         <div class="form-group">
@@ -24,9 +24,9 @@
         </div>
 
             <label>Email:</label>
-            <input type="email" class="form-control" name="Email" id="email" size="30" value="{{$user->Email}}">
+            <input type="email" class="form-control" name="email" id="email" size="30" value="{{$user->email}}">
 
-            <input type="hidden" name="Senha_de_acesso" id="Senha" value="{{$user->Senha_de_acesso}}">
+            <input type="hidden" name="password" id="Senha" value="{{$user->password}}">
 
             <label>Filme preferido:</label>
             <input type="text" class="form-control" name="Filme_preferido" id="Movie" value="{{$user->Filme_preferido}}">

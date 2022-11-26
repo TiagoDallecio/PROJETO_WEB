@@ -19,9 +19,9 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'Nome_Completo',
-        'Email',
-        'Senha_de_acesso',
+        'name',
+        'email',
+        'password',
         'CPF',
         'CEP',
         'Rua_de_moradia',
@@ -56,11 +56,6 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-
-    public function setPasswordAttribute($password)
-{
-    $this->attributes['password'] = Hash::make($password);
-}
 
     protected $guarded = [];
 }

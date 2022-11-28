@@ -20,21 +20,29 @@
             <p>Matrículas Abertas - Curso acontecerá!</p>
             <p>Dia: {{ $curso->data }}</p>
             @endif
-            <p>Número de alunos inscritos: {{$curso->Número_de_alunos_inscritos}}</p>
+            <p>Número de alunos inscritos: {{count($curso->user)}}</p>
             <p>Número mínimo de alunos: {{$curso->Número_mínimo_de_alunos}} &nbsp &nbsp &nbsp Número máximo de alunos: {{$curso->Número_máximo_de_alunos}}</p>
             @if($curso->Professor != 'NULL')
             <p>Professor: {{ $curso->Professor }}</p>
             @else
             <p>Professor: Sem atribuição de professor até o momento!</p>
             @endif
-            <a href="#" class="btn btn-primary">Inscreva-se</a>
+
+            @if($curso->Status < 2)
+            <form action="/curso/participar/{{$curso->id}}" method="POST">
+                @csrf
+                <a href="/curso/participar/{{$curso->id}}" class="btn btn-primary" onclick="event.preventDefault();this.closest('form').submit()">Inscreva-se</a>
+            </form>
+            @endif
             
+            @if(Auth::user()->Tipo_de_conta == 'Administrador' || Auth::user()->Tipo_de_conta == 'Secretaria')
             <a href="/curso/atualizar/{{$curso->id}}" class="btn btn-primary">Editar curso</a>
             <form action="/curso/consulta/{{$curso->id}}" method="POST">
                 @csrf
                 @method('DELETE')
                 <button type="submit" class="btn btn-danger delete-btn">Deletar curso</button>
             </form>
+            @endif
        </div>
        <div class="col-md-12" id="description-container">
         <br>

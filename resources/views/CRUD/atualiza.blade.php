@@ -26,7 +26,8 @@
             <label>Email:</label>
             <input type="email" class="form-control" name="email" id="email" size="30" value="{{$user->email}}">
 
-            <input type="hidden" name="password" id="Senha" value="{{$user->password}}">
+            <label>Troca de senha:</label>
+            <input type="text" class="form-control" name="password" id="Senha">
 
             <label>Filme preferido:</label>
             <input type="text" class="form-control" name="Filme_preferido" id="Movie" value="{{$user->Filme_preferido}}">
@@ -51,6 +52,8 @@
         <label>IBGE:
             <input name="ibge" type="text" id="ibge" class="form-control" size="8" /></label><br />
         <br>
+
+
 
         @if ($user->Tipo_de_conta == 'Professor')
 

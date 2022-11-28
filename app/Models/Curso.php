@@ -23,6 +23,11 @@ class Curso extends Model
         'data',
         'Imagem_do_curso',
     ];
+  
+    /*Relação usuario/curso */
+    public function user(){
+        return $this->belongsToMany('App\Models\User');
+    }
 
     protected $guarded = [];
 }

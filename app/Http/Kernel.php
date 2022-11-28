@@ -36,6 +36,17 @@ class Kernel extends HttpKernel
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
+
+        ],
+
+        'admsec' => [
+            \App\Http\Middleware\AdminAccess::class,
+            \App\Http\Middleware\SecretariaAccess::class,
+        ],
+
+        'profaluno' => [
+            \App\Http\Middleware\AlunoAccess::class,
+            \App\Http\Middleware\ProfessorAccess::class,
         ],
 
         'api' => [
@@ -63,5 +74,9 @@ class Kernel extends HttpKernel
         'signed' => \App\Http\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+        'admin' => \App\Http\Middleware\AdminAccess::class,
+        'aluno' => \App\Http\Middleware\AlunoAccess::class,
+        'secretaria' => \App\Http\Middleware\SecretariaAccess::class,
+        'professor' => \App\Http\Middleware\ProfessorAccess::class,
     ];
 }

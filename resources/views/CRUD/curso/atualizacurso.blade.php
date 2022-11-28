@@ -35,7 +35,7 @@
             <select name="Professor" id="prof" required>
                     <option value="NULL">Nenhum</option>
                 @foreach($user as $prof)
-                    <option value="{{$prof->Nome_Completo}}">{{$prof->Nome_Completo}}</option>
+                    <option value="{{$prof->name}}">{{$prof->name}}</option>
                 @endforeach
             </select>
             <br><br>

@@ -34,7 +34,7 @@
             <select name="prof" id="prof" required>
                 <option value="NULL">Nenhum</option>
                 @foreach($user as $prof)
-                <option value="{{$prof->Nome_Completo}}">{{$prof->Nome_Completo}}</option>
+                <option value="{{$prof->name}}">{{$prof->name}}</option>
                 @endforeach
             </select>
             <br><br>
@@ -48,7 +48,8 @@
             <input type="number" name="max" id="max" required>
             
             <br><br>
-            
+            <h3>Escolha a imagem do curso:</h3>
+
             @foreach($img as $image)
             <img src="{{ $image->img }}" width="210" height="140">
             <input type="checkbox" value="{{ $image->img }}" name="imagem" id="imagem">

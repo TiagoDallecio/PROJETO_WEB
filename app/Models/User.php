@@ -38,6 +38,11 @@ class User extends Authenticatable
         
     ];
 
+    /*Relação usuario/curso */
+    public function curso(){
+        return $this->belongsToMany('App\Models\Curso');
+    }
+
     /**
      * The attributes that should be hidden for serialization.
      *

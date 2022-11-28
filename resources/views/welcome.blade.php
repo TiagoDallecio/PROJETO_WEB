@@ -5,7 +5,8 @@
 @section('content')
 
 <div id="login-container" class="col-md-12">
-    <h2>Bem Vindo!</h2>
+    <h2>Bem Vindo {{Auth::user()->name}}!</h2>
+    @if(Auth::user()->Tipo_de_conta == 'Administrador' || Auth::user()->Tipo_de_conta == 'Secretaria')
     <p class="subtitle">Que tal fazer um cadastro no sistema?</p>
     <div id="cards-container" class="row">
         <div class="card col-md-3">
@@ -34,5 +35,35 @@
     </div>
 </div>
 
+@elseif(Auth::user()->Tipo_de_conta == 'Aluno')
+<p class="subtitle">Que tal fazer se inscrever em um novo curso?</p>
+    <div id="cards-container" class="row">
+        <div class="card col-md-3">
+            <a href="/usuario/cursos/{{Auth::user()->id}}" class="btn">
+            <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512"><rect x="64" y="176" width="384" height="256" rx="28.87" ry="28.87" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="32"/><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="32" d="M144 80h224M112 128h288"/></svg>
+            </a>
+            <h4>Ver meus cursos</h4>
+        </div>
+        <div class="card col-md-3">
+            <a href="curso/consulta" class="btn">
+            <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512"><title>Terminal</title><rect x="32" y="48" width="448" height="416" rx="48" ry="48" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="32"/><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M96 112l80 64-80 64M192 240h64"/></svg>
+            </a>
+            <h4>Cursos disponíveis</h4>
+        </div>
+    </div>
+</div>
+
+@elseif(Auth::user()->Tipo_de_conta == 'Professor')
+<p class="subtitle">Tenha um bom dia!</p>
+    <div id="cards-container" class="row">
+        <div class="card col-md-3">
+            <a href="usuario/cursos/{{Auth::user()->id}}" class="btn">
+            <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512"><title>Chevron Forward</title><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="48" d="M184 112l144 144-144 144"/></svg>
+            </a>
+            <h4>Ver cursos ministrados</h4>
+        </div>
+    </div>
+</div>
+@endif
 
 @endsection

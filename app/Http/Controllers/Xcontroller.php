@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\Avatar;
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\DB;
 use App\Models\User;
 use App\Models\Image;
 use App\Models\Curso;
+use Auth;
 
 class Xcontroller extends Controller
 {
@@ -92,6 +94,10 @@ class Xcontroller extends Controller
     {
        $users = User::find($id)->update($request->all());
 
+       if(Auth::user()->Tipo_de_conta == 'Aluno' || Auth::user()->Tipo_de_conta == 'Professor'){
+        
+        return redirect('/')->with('msg','Informações atualizadas com sucesso!');
+       }
         return redirect('/usuario/consulta')->with('msg','Usuário atualizado com sucesso!');
     }
 
@@ -108,7 +114,9 @@ class Xcontroller extends Controller
 
 public function cadcurso() {
     $user = User::where('Tipo_de_conta','Professor')->get();
-    $img = Image::all();
+    $img = DB::table('images')->select('img')->get();
+
+    
 
     return view('CRUD.curso.cadcurso',['user' => $user],['img'=>$img]);
 }
@@ -116,7 +124,16 @@ public function cadcurso() {
 public function cdb(){
    
     $curso = Curso::all();
-
+foreach($curso as $cursos){
+    if($cursos->Número_mínimo_de_alunos <= count($cursos->user)){
+        $cursos->Status = 1;
+    }
+}
+foreach($curso as $num){
+    if($num->Número_máximo_de_alunos == count($num->user)){
+        $num->Status = 2;
+    }
+}
     return view('CRUD.curso.conscurso',['cursos'=> $curso]);
 }
 
@@ -141,20 +158,30 @@ public function cstore(Request $request){
 public function read($id){
     
     $curso = Curso::findOrFail($id);
+    
+    if($curso->Número_mínimo_de_alunos <= count($curso->user)){
+        $curso->Status = 1;
+    }
+
+    if($curso->Número_máximo_de_alunos == count($curso->user)){
+        $curso->Status = 2;
+    }
 
     return view ('CRUD.curso.viewcurso', ['curso'=> $curso]);
 }
 
 public function cedit($id){
 
-    $curso = Curso::findOrFail($id);
 
     $user = User::where('Tipo_de_conta','Professor')->get();
+
+    $curso = Curso::findOrFail($id);
 
     return view ('CRUD.curso.atualizacurso', ['curso'=>$curso], ['user'=>$user]);
 }
 
 public function cupdate(Request $request, $id){
+
 
     Curso::find($id)->update($request->all());    
 
@@ -169,6 +196,50 @@ public function cdestroy($id){
     return redirect('curso/consulta')->with('msg','Curso excluído com sucesso!');
 }
 
+public function join($id){
+    $user = Auth::user();
+
+    $user-> curso()->attach($id);
+
+    $curso = Curso::findOrFail($id);
+
+    Auth::user()::findOrFail($id);
+
+    return redirect ('/')->with('msg','Inscrição realizada com sucesso!');
+}
+
+public function usercourses(){
+
+    $user = User::findOrFail(Auth::user()->id);
+    $cursos = $user->curso;
+
+    return view('cusers',['user'=>$user],['cursos'=>$cursos]);
+    
+}
+
+public function leave($id){
+    $user = Auth::user();
+
+    $user-> curso()->detach($id);
+
+    $curso = Curso::findOrFail($id);
+
+    return redirect ('/')->with('msg','Inscrição cancelada com sucesso!');
+}
+
+public function media($id){
+
+    $user = User::findOrFail($id);
+
+    return view('editmedia',['user'=>$user]);
+}
+
+public function updatemedia(Request $request, $id)
+{
+   $users = User::find($id)->update($request->all());
+
+    return redirect('/')->with('msg','Média atualizada com sucesso!');
+}
 
 }
 

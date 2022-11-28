@@ -27,9 +27,7 @@ return new class extends Migration
             $table->string('password')->nullable();
             $table->string('Tipo_de_conta')->nullable();
             $table->string('Avatar')->nullable();
-            $table->json('Cursos')->nullable();
             $table->float('Média')->nullable();
-            $table->json('Aula')->nullable();
             $table->datetime('Ultimo_acesso')->useCurrent();
             $table->rememberToken();
             $table->timestamps();

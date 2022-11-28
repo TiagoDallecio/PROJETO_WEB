@@ -18,6 +18,8 @@ class DatabaseSeeder extends Seeder
             avatares::class,
             cursoimg::class,
             users::class,
+            curso::class,
+            profcurso::class,
         ]);
 
 

@@ -1,0 +1,187 @@
+*{
+    font-family: 'Poppins';
+}
+
+body{
+    min-height: 100vh;
+    padding-bottom: 100px;
+    position: relative;   
+}
+
+header{
+    background-color: dimgrey;
+    border-bottom: 1px solid #ccc;
+
+}
+
+h1{
+    padding-left: 41%;
+}
+
+#axionimg{
+     padding-left:71% ;
+     padding-top: 100px;
+}
+
+.row{
+    margin: 0;
+}
+
+.container-fluid{
+    padding: 0;
+}
+
+#navbar{
+    justify-content: space-between;
+    background-color: white;
+    padding: 5px 0;
+}
+
+#navbar a:hover {
+    color: #7575;
+}
+
+#navbar a{
+    font-size: 14px;
+    color: #757575;
+}
+
+    /*Home*/
+    .container-fluid h5{
+        position: relative;
+        padding-left: 41%;
+    }
+
+    /*Login container*/
+    #login-container {
+        position: absolute;
+        top: 60%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 90%;
+        max-width: 1200px;
+        padding: 500px;
+        padding-top: 100px;
+    }
+    
+    #login-container .btn{
+        display: inline-block;
+        width: 90px;
+        height: 90px;
+        background: #fff;
+        box-shadow: 0 5px 15px -5px #aaa;
+        margin: 10px;
+        border-radius: 30%;
+        overflow: hidden;
+        position: relative;
+        color: #212121;
+    }
+    
+    #login-container .btn .card-body h5.card-title{
+        position: relative;
+        z-index: 4;
+        line-height: 90px;
+        font-size: 26px;
+        transition: 0.3s ease-in-out;
+    }
+    
+    #login-container .btn::before{
+        content: "";
+        position: absolute;
+        width: 120%;
+        height: 120%;
+        background: linear-gradient(rgb(94, 93, 93),black);
+        transform: rotate(45deg);
+        left: -110%;
+        top: 90%;
+    }
+    
+    #login-container .btn:hover .card-body h5.card-title{
+        color:#fff;
+        transform: scale(1.3);
+    }
+    
+    #login-container .btn:hover::before{
+        animation: onHover 0.7s 1;
+        left: -10%;
+        top: -10%;
+    }
+    
+    @keyframes onHover{
+        0% {
+            left: -110%;
+            top: 90%;
+        }
+        50%{
+            left: -110%;
+            top: -30%;
+        }
+        100%{
+            top: -10%;
+            left: -10%;
+        }
+    }
+
+
+#login-container h2 {
+    margin-bottom: 10px;
+}
+
+#login-container .subtitle{
+    color: #757575;
+    margin-bottom: 30px;
+}
+
+#cards-container {
+    display: flex;
+}
+
+#login-container .card{
+    flex: 1 1 0;
+    max-width: 33%;
+    border-radius: 10px;
+    padding: 0;
+    margin: 5px;
+}
+
+footer{
+    text-align: center;
+    background-color: #353E48;
+    color: #fff;
+    padding: 30px;
+    position:absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+footer p{
+    margin-bottom: 0;
+}
+
+/*Página de consulta*/
+.btn-primary {
+    background-color: #392620;
+    border: 2px solid #392620;
+    margin-top: 30px;
+    padding: 10px;
+}
+
+.btn-primary:hover{
+    background-color: #392643;
+    border-color: #392643;
+}
+
+
+#a-create-container{
+    padding: 30px;
+}
+
+#a-create-container label{
+    font-weight: bold;
+}
+
+#a-create-container input,
+#a-create-container select,
+#a-create-container textarea{
+    font-size: 12px;
+}

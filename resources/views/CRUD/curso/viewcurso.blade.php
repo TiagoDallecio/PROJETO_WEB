@@ -28,11 +28,13 @@
             <p>Professor: Sem atribuição de professor até o momento!</p>
             @endif
 
+            @if(Auth::user()->Tipo_de_conta == 'Aluno')
             @if($curso->Status < 2)
             <form action="/curso/participar/{{$curso->id}}" method="POST">
                 @csrf
                 <a href="/curso/participar/{{$curso->id}}" class="btn btn-primary" onclick="event.preventDefault();this.closest('form').submit()">Inscreva-se</a>
             </form>
+            @endif
             @endif
             
             @if(Auth::user()->Tipo_de_conta == 'Administrador' || Auth::user()->Tipo_de_conta == 'Secretaria')

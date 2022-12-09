@@ -5,6 +5,7 @@
 @section('content')
 
 <div id="login-container" class="col-md-12">
+    @if(Auth::check())
     <h2>Bem Vindo {{Auth::user()->name}}!</h2>
     @if(Auth::user()->Tipo_de_conta == 'Administrador' || Auth::user()->Tipo_de_conta == 'Secretaria')
     <p class="subtitle">Que tal fazer um cadastro no sistema?</p>
@@ -64,6 +65,11 @@
         </div>
     </div>
 </div>
+@endif
+@else
+
+<h2>Bem Vindo!</h2>
+    <h4>Por favor, realize o <a href="/login">login</a> para visualizar os cursos!</h4>
 @endif
 
 @endsection

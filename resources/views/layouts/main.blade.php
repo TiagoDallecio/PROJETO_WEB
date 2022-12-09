@@ -29,6 +29,7 @@
     <body>
         <header>
             <!--Barra de navegação do site-->
+            @if(Auth::check())
             @if(Auth::user()->Tipo_de_conta == 'Aluno')
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <div class="container-fluid">
@@ -222,7 +223,7 @@
                 </div>
             </nav>
 @endif
-
+@endif
         </header>
         <!--Logo do site, declaração de flash message e footer-->
         <img id="axionimg" src="/img/AXION.png">

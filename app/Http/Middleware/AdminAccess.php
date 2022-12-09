@@ -17,7 +17,7 @@ class AdminAccess
      */
     public function handle(Request $request, Closure $next)
     {
-        if(Auth::check() && Auth::user()->Tipo_de_conta == 'Administrador'){
+        if(Auth::check() && Auth::user()->Tipo_de_conta == 'Administrador' || Auth::user()->Tipo_de_conta == 'Secretaria'){
 
             return $next($request);
 

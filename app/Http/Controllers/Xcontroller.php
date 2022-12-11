@@ -80,7 +80,9 @@ class Xcontroller extends Controller
 
         $user = User::findOrFail($id);
 
-        return view('CRUD.atualiza',['user' => $user]);
+        $avatares = Avatar::all();
+
+        return view('CRUD.atualiza',['user' => $user],['avatares'=>$avatares]);
     }
 
      /**

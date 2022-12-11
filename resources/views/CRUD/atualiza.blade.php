@@ -59,11 +59,10 @@
 
         <br>
         <h3>Avatar:</h3>
-        <select name="Avatar" id="avatar" class="fake-sel">
-            <option value="/img/avatar/the_png">Chef</option>
-            <option value="/img/avatar/">teste</option>
-            <option value="/img/avatar/">teste2</option>
-        </select>
+        @for($i=0; $i<(count($avatares)); $i++)
+        <label for="$avatares[$i]"><img src="{{ $avatares[$i]->code }}" height="70" width="50"></label>
+        <input type="checkbox" name="$avatares[$i]" value="{{ $avatares[$i]->code }}" id="avatar">
+        @endfor
         @endif
 
         @if ($user->Tipo_de_conta == 'Administrador' || $user->Tipo_de_conta == 'Secretaria')

@@ -16,5 +16,7 @@
             <label for="Média">Inserir valor da media atual:</label>
             <input type="text" class="form-control" id="Média" name="Média" value="{{$user->Média}}">
         </div>
-
+        <input type="submit" class="btn btn-primary" value="Atualizar média"> 
+        </form>
+</div>
 @endsection

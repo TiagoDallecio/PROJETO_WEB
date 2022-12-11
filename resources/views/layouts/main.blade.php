@@ -109,7 +109,7 @@
                         <ul class="navbar-nav">
                          <li class="nav-item dropdown">
                                 <a class="nav-link active" aria-current="page" href="/usuario/cursos/{{Auth::user()->id}}">
-                                    Ver cursos 
+                                    Ver cursos ministrados 
                                 </a>
                             </li>
                         <!-- Right Side Of Navbar -->
